@@ -116,7 +116,7 @@ open http://[your-s3-bucket].s3-website-ap-southeast-1.amazonaws.com
 
 **Try the working application**: 
 - **Web Interface**: http://ai-image-analyzer-web-1751723364.s3-website-ap-southeast-1.amazonaws.com
-- **API Endpoint**: https://cuwg234q8g.execute-api.ap-southeast-1.amazonaws.com/prod/analyze
+- **API Endpoint**: https://spsvd9ec7i.execute-api.ap-southeast-1.amazonaws.com/prod/analyze
 
 ### Sample Analysis Results
 
