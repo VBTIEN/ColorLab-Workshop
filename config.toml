@@ -1,3 +1,8 @@
+# ColorLab-Workshop Hugo Configuration
+baseURL = "https://vbtien.github.io/ColorLab-Workshop/"
+languageCode = "en-us"
+title = "ColorLab Workshop - Professional Color Analysis Platform"
+
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
 
@@ -8,46 +13,39 @@ home = [ "HTML", "RSS", "JSON"]
 [params]
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "workshop"
-  # Git hub repo link
-  editURL = ""
-  description = ""
-  author = "journeyoftheaverageguy@gmail.com"
+  # Workshop specific settings
+  editURL = "https://github.com/VBTIEN/ColorLab-Workshop/edit/master/content"
+  description = "Professional Color Analysis Workshop using Advanced Mathematical Algorithms and AWS Serverless Architecture"
+  author = "AWS Solutions Architect"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
   
+  # Workshop branding
+  workshopTitle = "ColorLab Workshop"
+  workshopSubtitle = "Professional Color Analysis Platform"
+  workshopDuration = "3.5 hours"
+  workshopLevel = "Intermediate"
+  
+  # Custom CSS and JS
+  custom_css = ["css/custom.css"]
+  
 [Languages]
 [Languages.en]
-title = "Create a new AWS account."
+title = "ColorLab Workshop"
 weight = 1
 languageName = "English"
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
-identifier = "AWS Study Group"
-url = "https://aws.amazon.com/blogs"
-weight = 20
-
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-facebook'></i> AWS Study Group - FB Group"
-identifier = "AWS Study Group FB"
-url = "https://www.facebook.com/groups/awsstudygroupfcj"
-weight = 20
-
 [Languages.vi]
-title = "Tạo mới tài khoản AWS"
+title = "ColorLab Workshop"
 weight = 2
 languageName = "Tiếng Việt"
 
-[[Languages.vi.menu.shortcuts]]
-name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
-identifier = "AWS Study Group"
-url = "http://awsstudygroup.com"
-weight = 20
-
-[[Languages.vi.menu.shortcuts]]
-name = "<i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB"
-identifier = "AWS Study Group FB"
-url = "https://www.facebook.com/groups/awsstudygroupfcj"
-weight = 20
-
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = true
+    tabWidth = 2

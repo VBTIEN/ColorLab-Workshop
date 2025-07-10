@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="description" content="Professional Color Analysis Workshop using Advanced Mathematical Algorithms and AWS Serverless Architecture">
+<meta name="author" content="AWS Solutions Architect">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title> :: ColorLab Workshop</title>
+
+    
+    <link href="/css/nucleus.css?1752146094" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1752146094" rel="stylesheet">
+    <link href="/css/hybrid.css?1752146094" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1752146094" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1752146094" rel="stylesheet">
+    <link href="/css/auto-complete.css?1752146094" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1752146094" rel="stylesheet">
+    <link href="/css/theme.css?1752146094" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1752146094" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1752146094" rel="stylesheet">
+    
+    <link href="/css/custom.css?1752146094" rel="stylesheet">
+
+    <script src="/js/jquery-3.3.1.min.js?1752146094"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/02-architecture/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1752146094"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1752146094"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1752146094"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-create-new-aws-account/" title="Create new AWS account" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-create-new-aws-account/">
+           <b> 1. </b> Create new AWS account
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-create-new-aws-account/1.1-find-account-id/" title="View AWS account identifiers" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-create-new-aws-account/1.1-find-account-id/">
+           <b> 1.1 </b> View AWS account identifiers
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-create-new-aws-account/1.2-update-account/" title="Update the AWS account" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-create-new-aws-account/1.2-update-account/">
+           <b> 1.2 </b> Update the AWS account
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-create-new-aws-account/1.3-aws-account-alias/" title="Create or update your AWS account alias" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-create-new-aws-account/1.3-aws-account-alias/">
+           <b> 1.3 </b> Create or update your AWS account alias
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-create-new-aws-account/1.4-close-account/" title="Close a standalone AWS account" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-create-new-aws-account/1.4-close-account/">
+           <b> 1.4 </b> Close a standalone AWS account
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/" title="MFA for AWS Accounts" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-mfa-setup-for-aws-user-root/">
+           <b> 2. </b> MFA for AWS Accounts
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/1-virtual-mfa-device/" title="Virtual MFA Device" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-mfa-setup-for-aws-user-root/1-virtual-mfa-device/">
+           <b> 2.1 </b> Virtual MFA Device
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/2-u2f-security-key/" title="U2F Security Key" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-mfa-setup-for-aws-user-root/2-u2f-security-key/">
+           <b> 2.2 </b> U2F Security Key
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-mfa-setup-for-aws-user-root/3-other-hardware-mfa-device/" title="Hard MFA Device" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-mfa-setup-for-aws-user-root/3-other-hardware-mfa-device/">
+           <b> 2.3 </b> Hard MFA Device
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-create-admin-user-and-group/" title="Create Admin Group and Admin User" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-create-admin-user-and-group/">
+           <b> 3. </b> Create Admin Group and Admin User
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-verify-new-account/" title="Account Authentication Support" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-verify-new-account/">
+           <b> 4. </b> Account Authentication Support
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="//localhost:1313/02-architecture/" selected>English</option>
+                    
+                  
+              
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830891&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>26-11-2023</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng</a>
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                  
+                  
+                  
+                  <div id="top-github-link">
+                    <a class="github-link" title='Edit this page' href="https://github.com/VBTIEN/ColorLab-Workshop/edit/master/content/02-architecture.md" target="blank">
+                      <i class="fas fa-code-branch"></i>
+                      <span id="top-github-link-text">Edit this page</span>
+                    </a>
+                  </div>
+                  
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/'>ColorLab Workshop</a> > 
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-objective">🎯 Objective</a></li>
+    <li><a href="#-duration-20-minutes">⏱️ Duration: 20 minutes</a></li>
+    <li><a href="#-solution-architecture">🏗️ Solution Architecture</a>
+      <ul>
+        <li><a href="#high-level-architecture-diagram">High-Level Architecture Diagram</a></li>
+      </ul>
+    </li>
+    <li><a href="#-component-breakdown">🧩 Component Breakdown</a>
+      <ul>
+        <li><a href="#1-frontend-layer">1. <strong>Frontend Layer</strong></a></li>
+        <li><a href="#2-api-layer">2. <strong>API Layer</strong></a></li>
+        <li><a href="#3-compute-layer">3. <strong>Compute Layer</strong></a></li>
+        <li><a href="#4-dependencies-layer">4. <strong>Dependencies Layer</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#-technical-deep-dive">🔬 Technical Deep Dive</a>
+      <ul>
+        <li><a href="#color-analysis-algorithms">Color Analysis Algorithms</a></li>
+      </ul>
+    </li>
+    <li><a href="#-data-flow">📊 Data Flow</a>
+      <ul>
+        <li><a href="#request-flow">Request Flow:</a></li>
+        <li><a href="#response-structure">Response Structure:</a></li>
+      </ul>
+    </li>
+    <li><a href="#-aws-services-deep-dive">🔧 AWS Services Deep Dive</a>
+      <ul>
+        <li><a href="#aws-lambda"><strong>AWS Lambda</strong></a></li>
+        <li><a href="#amazon-s3"><strong>Amazon S3</strong></a></li>
+        <li><a href="#api-gateway"><strong>API Gateway</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#-performance-characteristics">🎯 Performance Characteristics</a>
+      <ul>
+        <li><a href="#expected-performance"><strong>Expected Performance</strong>:</a></li>
+        <li><a href="#scalability"><strong>Scalability</strong>:</a></li>
+      </ul>
+    </li>
+    <li><a href="#-cost-analysis">💰 Cost Analysis</a>
+      <ul>
+        <li><a href="#estimated-costs-per-1000-analyses"><strong>Estimated Costs</strong> (per 1000 analyses):</a></li>
+        <li><a href="#free-tier-benefits"><strong>Free Tier Benefits</strong>:</a></li>
+      </ul>
+    </li>
+    <li><a href="#-security-considerations">🔒 Security Considerations</a>
+      <ul>
+        <li><a href="#built-in-security"><strong>Built-in Security</strong>:</a></li>
+        <li><a href="#best-practices"><strong>Best Practices</strong>:</a></li>
+      </ul>
+    </li>
+    <li><a href="#-deployment-strategy">🚀 Deployment Strategy</a>
+      <ul>
+        <li><a href="#infrastructure-as-code"><strong>Infrastructure as Code</strong>:</a></li>
+        <li><a href="#deployment-stages"><strong>Deployment Stages</strong>:</a></li>
+      </ul>
+    </li>
+    <li><a href="#-monitoring--observability">📈 Monitoring &amp; Observability</a>
+      <ul>
+        <li><a href="#built-in-monitoring"><strong>Built-in Monitoring</strong>:</a></li>
+        <li><a href="#key-metrics"><strong>Key Metrics</strong>:</a></li>
+      </ul>
+    </li>
+    <li><a href="#-learning-outcomes">🎓 Learning Outcomes</a>
+      <ul>
+        <li><a href="#technical-concepts"><strong>Technical Concepts</strong>:</a></li>
+        <li><a href="#best-practices-1"><strong>Best Practices</strong>:</a></li>
+      </ul>
+    </li>
+    <li><a href="#-next-steps">🔄 Next Steps</a></li>
+    <li><a href="#-additional-resources">📚 Additional Resources</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              
+            </h1>
+          
+
+        
+
+
+<h1 id="module-1-architecture-overview">Module 1: Architecture Overview</h1>
+<h2 id="-objective">🎯 Objective</h2>
+<p>Understand the solution architecture and AWS services we&rsquo;ll use to build the AI Image Analyzer.</p>
+<h2 id="-duration-20-minutes">⏱️ Duration: 20 minutes</h2>
+<hr>
+<h2 id="-solution-architecture">🏗️ Solution Architecture</h2>
+<h3 id="high-level-architecture-diagram">High-Level Architecture Diagram</h3>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                           AI Image Analyzer Architecture                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+    │    User     │         │   Browser   │         │  Internet   │
+    │             │────────▶│             │────────▶│             │
+    └─────────────┘         └─────────────┘         └─────────────┘
+                                    │
+                                    ▼
+    ┌─────────────────────────────────────────────────────────────────────────┐
+    │                          AWS Cloud                                      │
+    │                                                                         │
+    │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                │
+    │  │     S3      │    │ API Gateway │    │   Lambda    │                │
+    │  │ Static Web  │◀──▶│   REST API  │◀──▶│  Function   │                │
+    │  │  Hosting    │    │             │    │             │                │
+    │  └─────────────┘    └─────────────┘    └─────────────┘                │
+    │         │                   │                   │                      │
+    │         ▼                   ▼                   ▼                      │
+    │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                │
+    │  │ Image Files │    │   CORS      │    │ Lambda      │                │
+    │  │   Storage   │    │ Configuration│    │   Layer     │                │
+    │  └─────────────┘    └─────────────┘    └─────────────┘                │
+    │                                                │                       │
+    │                                                ▼                       │
+    │                                        ┌─────────────┐                │
+    │                                        │ PIL/NumPy   │                │
+    │                                        │ Libraries   │                │
+    │                                        └─────────────┘                │
+    └─────────────────────────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="-component-breakdown">🧩 Component Breakdown</h2>
+<h3 id="1-frontend-layer">1. <strong>Frontend Layer</strong></h3>
+<h4 id="s3-static-website-hosting"><strong>S3 Static Website Hosting</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Host the web interface</li>
+<li><strong>Features</strong>:
+<ul>
+<li>Static HTML/CSS/JavaScript files</li>
+<li>Direct browser access</li>
+<li>Cost-effective hosting</li>
+<li>High availability</li>
+</ul>
+</li>
+</ul>
+<h4 id="web-interface-components"><strong>Web Interface Components</strong>:</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#998;font-style:italic">// Key Frontend Features
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">-</span> Image Upload (Drag <span style="color:#000;font-weight:bold">&amp;</span> Drop)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Real<span style="color:#000;font-weight:bold">-</span>time Analysis Display
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Color Frequency Visualization
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Regional Color Distribution
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Professional Color Swatches
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Responsive Design
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-api-layer">2. <strong>API Layer</strong></h3>
+<h4 id="amazon-api-gateway"><strong>Amazon API Gateway</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: RESTful API for frontend-backend communication</li>
+<li><strong>Features</strong>:
+<ul>
+<li>HTTP endpoints</li>
+<li>CORS configuration</li>
+<li>Request/Response transformation</li>
+<li>Error handling</li>
+<li>Throttling and caching</li>
+</ul>
+</li>
+</ul>
+<h4 id="api-endpoints"><strong>API Endpoints</strong>:</h4>
+<pre tabindex="0"><code>POST /analyze
+├── Accept: multipart/form-data
+├── Process: Image file upload
+└── Return: JSON analysis results
+
+GET /health
+├── Purpose: Health check
+└── Return: API status
+</code></pre><h3 id="3-compute-layer">3. <strong>Compute Layer</strong></h3>
+<h4 id="aws-lambda-function"><strong>AWS Lambda Function</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Serverless image processing</li>
+<li><strong>Configuration</strong>:
+<ul>
+<li>Runtime: Python 3.11</li>
+<li>Memory: 2048 MB</li>
+<li>Timeout: 120 seconds</li>
+<li>Handler: <code>lambda_function.lambda_handler</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="processing-pipeline"><strong>Processing Pipeline</strong>:</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Lambda Function Flow</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">1.</span> Receive image data
+</span></span><span style="display:flex;"><span><span style="color:#099">2.</span> Decode base64 image
+</span></span><span style="display:flex;"><span><span style="color:#099">3.</span> Load image <span style="color:#000;font-weight:bold">with</span> PIL
+</span></span><span style="display:flex;"><span><span style="color:#099">4.</span> Apply color analysis algorithms
+</span></span><span style="display:flex;"><span><span style="color:#099">5.</span> Generate results
+</span></span><span style="display:flex;"><span><span style="color:#099">6.</span> Return JSON response
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-dependencies-layer">4. <strong>Dependencies Layer</strong></h3>
+<h4 id="lambda-layer"><strong>Lambda Layer</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Shared libraries for image processing</li>
+<li><strong>Contents</strong>:
+<ul>
+<li>PIL/Pillow (Image processing)</li>
+<li>NumPy (Numerical computations)</li>
+<li>Other Python dependencies</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-technical-deep-dive">🔬 Technical Deep Dive</h2>
+<h3 id="color-analysis-algorithms">Color Analysis Algorithms</h3>
+<h4 id="1-k-means-clustering"><strong>1. K-Means++ Clustering</strong></h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Advanced color extraction</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Algorithm: K<span style="color:#000;font-weight:bold">-</span>Means<span style="color:#000;font-weight:bold">++</span> initialization
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Color Space: LAB (perceptually uniform)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Clusters: <span style="color:#099">5</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">10</span> dominant colors
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">-</span> Accuracy: <span style="color:#099">70</span><span style="color:#000;font-weight:bold">%</span> improvement over basic methods
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-regional-analysis"><strong>2. Regional Analysis</strong></h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 3x3 Grid Analysis</span>
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">┌─────┬─────┬─────┐</span>
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">1</span>,<span style="color:#099">1</span> <span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">1</span>,<span style="color:#099">2</span> <span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">1</span>,<span style="color:#099">3</span> <span style="color:#a61717;background-color:#e3d2d2">│</span>  Each cell analyzed
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">├─────┼─────┼─────┤</span>  <span style="color:#000;font-weight:bold">for</span> dominant colors
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">2</span>,<span style="color:#099">1</span> <span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">2</span>,<span style="color:#099">2</span> <span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">2</span>,<span style="color:#099">3</span> <span style="color:#a61717;background-color:#e3d2d2">│</span>  
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">├─────┼─────┼─────┤</span>
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">3</span>,<span style="color:#099">1</span> <span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">3</span>,<span style="color:#099">2</span> <span style="color:#a61717;background-color:#e3d2d2">│</span> <span style="color:#099">3</span>,<span style="color:#099">3</span> <span style="color:#a61717;background-color:#e3d2d2">│</span>
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">└─────┴─────┴─────┘</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-color-space-conversion"><strong>3. Color Space Conversion</strong></h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Multi-space analysis</span>
+</span></span><span style="display:flex;"><span>RGB <span style="color:#a61717;background-color:#e3d2d2">→</span> LAB <span style="color:#a61717;background-color:#e3d2d2">→</span> Analysis <span style="color:#a61717;background-color:#e3d2d2">→</span> RGB
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">├──</span> RGB: Display colors
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">├──</span> LAB: Perceptual accuracy
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">└──</span> HSV: Hue<span style="color:#000;font-weight:bold">/</span>Saturation analysis
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-data-flow">📊 Data Flow</h2>
+<h3 id="request-flow">Request Flow:</h3>
+<pre tabindex="0"><code>1. User uploads image in browser
+   ↓
+2. JavaScript converts to base64
+   ↓
+3. POST request to API Gateway
+   ↓
+4. API Gateway forwards to Lambda
+   ↓
+5. Lambda processes image
+   ↓
+6. Lambda returns analysis results
+   ↓
+7. API Gateway returns to browser
+   ↓
+8. JavaScript displays results
+</code></pre><h3 id="response-structure">Response Structure:</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#000080">&#34;statusCode&#34;</span>: <span style="color:#099">200</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#000080">&#34;body&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#000080">&#34;colorFrequency&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&#34;color&#34;</span>: <span style="color:#d14">&#34;#FF5733&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&#34;name&#34;</span>: <span style="color:#d14">&#34;Vermillion&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&#34;percentage&#34;</span>: <span style="color:#099">25.4</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&#34;rgb&#34;</span>: [<span style="color:#099">255</span>, <span style="color:#099">87</span>, <span style="color:#099">51</span>]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#000080">&#34;regionalAnalysis&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#000080">&#34;grid&#34;</span>: [
+</span></span><span style="display:flex;"><span>        [
+</span></span><span style="display:flex;"><span>          {<span style="color:#000080">&#34;position&#34;</span>: <span style="color:#d14">&#34;1,1&#34;</span>, <span style="color:#000080">&#34;color&#34;</span>: <span style="color:#d14">&#34;#FF5733&#34;</span>, <span style="color:#000080">&#34;name&#34;</span>: <span style="color:#d14">&#34;Vermillion&#34;</span>},
+</span></span><span style="display:flex;"><span>          {<span style="color:#000080">&#34;position&#34;</span>: <span style="color:#d14">&#34;1,2&#34;</span>, <span style="color:#000080">&#34;color&#34;</span>: <span style="color:#d14">&#34;#33FF57&#34;</span>, <span style="color:#000080">&#34;name&#34;</span>: <span style="color:#d14">&#34;Spring Green&#34;</span>}
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#000080">&#34;metadata&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#000080">&#34;processingTime&#34;</span>: <span style="color:#099">1.23</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#000080">&#34;imageSize&#34;</span>: [<span style="color:#099">800</span>, <span style="color:#099">600</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#000080">&#34;algorithm&#34;</span>: <span style="color:#d14">&#34;kmeans_plus_plus&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-aws-services-deep-dive">🔧 AWS Services Deep Dive</h2>
+<h3 id="aws-lambda"><strong>AWS Lambda</strong></h3>
+<h4 id="why-lambda"><strong>Why Lambda?</strong></h4>
+<ul>
+<li>✅ <strong>Serverless</strong>: No server management</li>
+<li>✅ <strong>Scalable</strong>: Automatic scaling</li>
+<li>✅ <strong>Cost-effective</strong>: Pay per request</li>
+<li>✅ <strong>Fast</strong>: Sub-second response times</li>
+</ul>
+<h4 id="configuration"><strong>Configuration</strong>:</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#000080">Function Configuration</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Runtime</span>:<span style="color:#bbb"> </span>python3.11<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Memory</span>:<span style="color:#bbb"> </span><span style="color:#099">2048</span><span style="color:#bbb"> </span>MB (for image processing)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Timeout</span>:<span style="color:#bbb"> </span><span style="color:#099">120</span><span style="color:#bbb"> </span>seconds<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Environment Variables</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#000080">ALGORITHM</span>:<span style="color:#bbb"> </span>kmeans_plus_plus<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#000080">COLOR_SPACE</span>:<span style="color:#bbb"> </span>lab<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>- <span style="color:#000080">ACCURACY_MODE</span>:<span style="color:#bbb"> </span>high<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="amazon-s3"><strong>Amazon S3</strong></h3>
+<h4 id="why-s3"><strong>Why S3?</strong></h4>
+<ul>
+<li>✅ <strong>Static Hosting</strong>: Built-in web hosting</li>
+<li>✅ <strong>Reliable</strong>: 99.999999999% durability</li>
+<li>✅ <strong>Fast</strong>: Global CDN integration</li>
+<li>✅ <strong>Secure</strong>: Fine-grained access control</li>
+</ul>
+<h4 id="configuration-1"><strong>Configuration</strong>:</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#000080">Bucket Configuration</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Static Website Hosting</span>:<span style="color:#bbb"> </span>Enabled<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Index Document</span>:<span style="color:#bbb"> </span>index.html<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Error Document</span>:<span style="color:#bbb"> </span>error.html<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">CORS</span>:<span style="color:#bbb"> </span>Configured for API calls<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="api-gateway"><strong>API Gateway</strong></h3>
+<h4 id="why-api-gateway"><strong>Why API Gateway?</strong></h4>
+<ul>
+<li>✅ <strong>RESTful</strong>: Standard HTTP methods</li>
+<li>✅ <strong>CORS</strong>: Cross-origin support</li>
+<li>✅ <strong>Throttling</strong>: Rate limiting</li>
+<li>✅ <strong>Monitoring</strong>: Built-in metrics</li>
+</ul>
+<h4 id="configuration-2"><strong>Configuration</strong>:</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#000080">API Configuration</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Type</span>:<span style="color:#bbb"> </span>REST API<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Endpoint</span>:<span style="color:#bbb"> </span>Regional<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">CORS</span>:<span style="color:#bbb"> </span>Enabled<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Methods</span>:<span style="color:#bbb"> </span>POST, OPTIONS<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#000080">Integration</span>:<span style="color:#bbb"> </span>Lambda Proxy<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="-performance-characteristics">🎯 Performance Characteristics</h2>
+<h3 id="expected-performance"><strong>Expected Performance</strong>:</h3>
+<pre tabindex="0"><code>Image Processing Time: 1-3 seconds
+API Response Time: &lt; 5 seconds
+Concurrent Users: 1000+ (with auto-scaling)
+Accuracy: 70% better than basic algorithms
+Cost per Analysis: &lt; $0.001
+</code></pre><h3 id="scalability"><strong>Scalability</strong>:</h3>
+<pre tabindex="0"><code>Lambda Concurrency: 1000 concurrent executions
+API Gateway: 10,000 requests/second
+S3 Hosting: Unlimited bandwidth
+Auto-scaling: Automatic based on demand
+</code></pre><hr>
+<h2 id="-cost-analysis">💰 Cost Analysis</h2>
+<h3 id="estimated-costs-per-1000-analyses"><strong>Estimated Costs</strong> (per 1000 analyses):</h3>
+<pre tabindex="0"><code>AWS Lambda: $0.20
+API Gateway: $3.50
+S3 Storage: $0.02
+S3 Requests: $0.01
+Total: ~$3.73 per 1000 analyses
+</code></pre><h3 id="free-tier-benefits"><strong>Free Tier Benefits</strong>:</h3>
+<pre tabindex="0"><code>Lambda: 1M requests/month free
+API Gateway: 1M requests/month free
+S3: 5GB storage free
+Estimated free analyses: ~100,000/month
+</code></pre><hr>
+<h2 id="-security-considerations">🔒 Security Considerations</h2>
+<h3 id="built-in-security"><strong>Built-in Security</strong>:</h3>
+<ul>
+<li>✅ <strong>HTTPS</strong>: All communications encrypted</li>
+<li>✅ <strong>IAM</strong>: Fine-grained permissions</li>
+<li>✅ <strong>CORS</strong>: Controlled cross-origin access</li>
+<li>✅ <strong>Input Validation</strong>: Secure image processing</li>
+</ul>
+<h3 id="best-practices"><strong>Best Practices</strong>:</h3>
+<ul>
+<li>✅ <strong>Least Privilege</strong>: Minimal IAM permissions</li>
+<li>✅ <strong>No Hardcoded Secrets</strong>: Environment variables</li>
+<li>✅ <strong>Error Handling</strong>: No sensitive data in errors</li>
+<li>✅ <strong>Monitoring</strong>: CloudWatch logging</li>
+</ul>
+<hr>
+<h2 id="-deployment-strategy">🚀 Deployment Strategy</h2>
+<h3 id="infrastructure-as-code"><strong>Infrastructure as Code</strong>:</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Automated deployment scripts</span>
+</span></span><span style="display:flex;"><span>./scripts/setup-infrastructure.sh
+</span></span><span style="display:flex;"><span>./scripts/deploy-lambda.sh
+</span></span><span style="display:flex;"><span>./scripts/deploy-web.sh
+</span></span><span style="display:flex;"><span>./scripts/configure-api.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="deployment-stages"><strong>Deployment Stages</strong>:</h3>
+<ol>
+<li><strong>Infrastructure</strong>: Create AWS resources</li>
+<li><strong>Backend</strong>: Deploy Lambda function</li>
+<li><strong>API</strong>: Configure API Gateway</li>
+<li><strong>Frontend</strong>: Upload web files to S3</li>
+<li><strong>Testing</strong>: Verify end-to-end functionality</li>
+</ol>
+<hr>
+<h2 id="-monitoring--observability">📈 Monitoring &amp; Observability</h2>
+<h3 id="built-in-monitoring"><strong>Built-in Monitoring</strong>:</h3>
+<ul>
+<li>✅ <strong>CloudWatch Logs</strong>: Function execution logs</li>
+<li>✅ <strong>CloudWatch Metrics</strong>: Performance metrics</li>
+<li>✅ <strong>API Gateway Metrics</strong>: Request/response metrics</li>
+<li>✅ <strong>Error Tracking</strong>: Automatic error detection</li>
+</ul>
+<h3 id="key-metrics"><strong>Key Metrics</strong>:</h3>
+<pre tabindex="0"><code>Lambda Duration: Processing time per request
+Lambda Errors: Error rate and types
+API Gateway 4xx/5xx: Client/server errors
+S3 Requests: Website traffic
+</code></pre><hr>
+<h2 id="-learning-outcomes">🎓 Learning Outcomes</h2>
+<p>After understanding this architecture, you&rsquo;ll know:</p>
+<h3 id="technical-concepts"><strong>Technical Concepts</strong>:</h3>
+<ul>
+<li>✅ Serverless architecture patterns</li>
+<li>✅ RESTful API design</li>
+<li>✅ Static website hosting</li>
+<li>✅ Image processing algorithms</li>
+<li>✅ AWS service integration</li>
+</ul>
+<h3 id="best-practices-1"><strong>Best Practices</strong>:</h3>
+<ul>
+<li>✅ Cost optimization strategies</li>
+<li>✅ Security implementation</li>
+<li>✅ Performance optimization</li>
+<li>✅ Monitoring and logging</li>
+<li>✅ Error handling</li>
+</ul>
+<hr>
+<h2 id="-next-steps">🔄 Next Steps</h2>
+<p>Now that you understand the architecture:</p>
+<ol>
+<li><strong>Review the components</strong> and their interactions</li>
+<li><strong>Ask questions</strong> about any unclear concepts</li>
+<li><strong>Prepare for hands-on development</strong> in the next modules</li>
+</ol>
+<hr>
+<p><strong>Ready to start building?</strong> Let&rsquo;s move to <a href="/03-backend-development/">Module 2 - Backend Development</a>! 🚀</p>
+<hr>
+<h2 id="-additional-resources">📚 Additional Resources</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html">AWS Lambda Best Practices</a></li>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/">API Gateway Developer Guide</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html">S3 Static Website Hosting</a></li>
+<li><a href="https://pillow.readthedocs.io/en/stable/handbook/tutorial.html">Image Processing with PIL</a></li>
+</ul>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+		
+			<a class="nav nav-next" href="/1-create-new-aws-account/" title="Create new AWS account" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1752146094"></script>
+    <script src="/js/perfect-scrollbar.min.js?1752146094"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1752146094"></script>
+    <script src="/js/jquery.sticky.js?1752146094"></script>
+    <script src="/js/featherlight.min.js?1752146094"></script>
+    <script src="/js/highlight.pack.js?1752146094"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1752146094"></script>
+    <script src="/js/learn.js?1752146094"></script>
+    <script src="/js/hugo-learn.js?1752146094"></script>
+
+    <link href="/mermaid/mermaid.css?1752146094" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1752146094"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
+

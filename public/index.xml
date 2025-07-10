@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Setting up an AWS account on Create a new AWS account.</title>
-    <link>/</link>
-    <description>Recent content in Setting up an AWS account on Create a new AWS account.</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <title>ColorLab Workshop</title>
+    <link>//localhost:1313/</link>
+    <description>Recent content on ColorLab Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>//localhost:1313/00-introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/00-introduction/</guid>
+      <description>🎨 Workshop: Building Intelligent Image Analysis with AWS AI Services Welcome to the AI Image Analyzer Workshop! 🎯 What You&amp;rsquo;ll Build Today In this hands-on workshop, you&amp;rsquo;ll create a professional-grade image analysis application that can:&#xA;Analyze color composition of any uploaded image Extract dominant colors with professional accuracy Perform regional analysis using advanced algorithms Display results in a beautiful, interactive web interface Deploy everything on AWS serverless architecture 🏗️ Architecture Overview ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ User │ │ S3 │ │ Lambda │ │ Results │ │ Upload │───▶│ Storage │───▶│ Analysis │───▶│ Display │ │ Image │ │ │ │ │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘ │ │ ▼ ▼ ┌─────────────┐ ┌─────────────┐ │ Static Web │ │ API Gateway │ │ Hosting │ │ │ └─────────────┘ └─────────────┘ 🛠️ Technologies You&amp;rsquo;ll Use AWS Services: AWS Lambda: Serverless compute for image processing Amazon S3: Storage for images and static website hosting API Gateway: RESTful API for frontend-backend communication IAM: Security and access management Programming &amp;amp; Tools: Python: Backend image analysis algorithms PIL/Pillow: Advanced image processing NumPy: Numerical computations for color analysis HTML/CSS/JavaScript: Modern web interface Tailwind CSS: Professional styling framework 🎓 What You&amp;rsquo;ll Learn Technical Skills: Serverless Architecture: Build scalable applications without managing servers Image Processing: Implement advanced color analysis algorithms API Development: Create RESTful APIs with API Gateway Frontend Integration: Connect web interfaces to backend services AWS Deployment: Deploy full-stack applications on AWS Advanced Concepts: K-Means++ Clustering: Advanced color extraction algorithms LAB Color Space: Professional color analysis techniques Regional Analysis: Divide images into zones for detailed analysis Performance Optimization: Optimize Lambda functions for speed and cost Error Handling: Robust error handling and user feedback 🎨 Real-World Applications The techniques you&amp;rsquo;ll learn apply to:</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/01-prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/01-prerequisites/</guid>
+      <description>Module 0: Prerequisites &amp;amp; Setup 🎯 Objective Set up your development environment and AWS account for the workshop.&#xA;⏱️ Duration: 30 minutes 📋 Checklist By the end of this module, you should have:&#xA;AWS Account with admin access AWS CLI installed and configured IAM user created (if needed) Development environment ready Workshop files downloaded 🔧 Step 1: AWS Account Setup If you don&amp;rsquo;t have an AWS Account: Go to AWS Console: https://aws.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/02-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/02-architecture/</guid>
+      <description>Module 1: Architecture Overview 🎯 Objective Understand the solution architecture and AWS services we&amp;rsquo;ll use to build the AI Image Analyzer.&#xA;⏱️ Duration: 20 minutes 🏗️ Solution Architecture High-Level Architecture Diagram ┌─────────────────────────────────────────────────────────────────────────────┐ │ AI Image Analyzer Architecture │ └─────────────────────────────────────────────────────────────────────────────┘ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ User │ │ Browser │ │ Internet │ │ │────────▶│ │────────▶│ │ └─────────────┘ └─────────────┘ └─────────────┘ │ ▼ ┌─────────────────────────────────────────────────────────────────────────┐ │ AWS Cloud │ │ │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ S3 │ │ API Gateway │ │ Lambda │ │ │ │ Static Web │◀──▶│ REST API │◀──▶│ Function │ │ │ │ Hosting │ │ │ │ │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ │ │ │ │ │ │ ▼ ▼ ▼ │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ Image Files │ │ CORS │ │ Lambda │ │ │ │ Storage │ │ Configuration│ │ Layer │ │ │ └─────────────┘ └─────────────┘ └─────────────┘ │ │ │ │ │ ▼ │ │ ┌─────────────┐ │ │ │ PIL/NumPy │ │ │ │ Libraries │ │ │ └─────────────┘ │ └─────────────────────────────────────────────────────────────────────────┘ 🧩 Component Breakdown 1.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/03-backend-development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/03-backend-development/</guid>
+      <description>Module 2: Backend Development 🎯 Objective Build the AWS Lambda function that will perform intelligent image analysis using advanced color extraction algorithms.&#xA;⏱️ Duration: 60 minutes 📋 What You&amp;rsquo;ll Build In this module, you&amp;rsquo;ll create:&#xA;AWS Lambda Function for serverless image processing Lambda Layer with PIL/NumPy dependencies Advanced Color Analysis using K-Means++ algorithms Regional Analysis with 3x3 grid processing Professional Color Naming system 🏗️ Lab 2.1: Create Lambda Function (30 min) Step 1: Prepare Lambda Function Code First, let&amp;rsquo;s examine the production-ready Lambda function code:</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/04-api-gateway/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/04-api-gateway/</guid>
+      <description>Module 3: API Gateway Setup 🎯 Objective Create a RESTful API using Amazon API Gateway to expose your Lambda function to the web interface.&#xA;⏱️ Duration: 30 minutes 📋 What You&amp;rsquo;ll Build In this module, you&amp;rsquo;ll create:&#xA;REST API with API Gateway POST endpoint for image analysis CORS configuration for web access Error handling and response formatting API deployment and testing 🏗️ Lab 3.1: Create REST API (20 min) Step 1: Create API Gateway 1 2 3 4 5 # Create REST API aws apigateway create-rest-api \ --name &amp;#34;ai-image-analyzer-api&amp;#34; \ --description &amp;#34;AI Image Analyzer API for color analysis&amp;#34; \ --region ap-southeast-1 Step 2: Get API Details 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # Get API ID API_ID=$(aws apigateway get-rest-apis \ --query &amp;#39;items[?</description>
+    </item>
   </channel>
 </rss>
