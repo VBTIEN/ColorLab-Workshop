@@ -1,25 +1,27 @@
-# 🎨 ColorLab: Professional Color Analysis Platform
+# 🎨 ColorLab Workshop: Professional Color Analysis Platform
 
 > **Advanced Mathematical Color Analysis using AWS Serverless Architecture**
+> 
+> **Complete Educational Workshop for Cloud Computing & Mathematical Algorithms**
 
 [![AWS](https://img.shields.io/badge/AWS-Cloud-orange)](https://aws.amazon.com/)
 [![Python](https://img.shields.io/badge/Python-3.11-blue)](https://python.org/)
 [![Algorithm](https://img.shields.io/badge/Algorithm-K--Means++-green)](https://en.wikipedia.org/wiki/K-means%2B%2B)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Workshop](https://img.shields.io/badge/Type-Educational-red)](https://github.com/AWS-First-Cloud-Journey)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-## 🚀 Overview
+## 🎓 Workshop Overview
 
-ColorLab is a professional-grade color analysis platform that combines advanced mathematical algorithms with AWS serverless architecture. Built for educational institutions, design professionals, and businesses requiring accurate color analysis capabilities.
+ColorLab Workshop is a comprehensive educational program that teaches professional color analysis through advanced mathematical algorithms and AWS serverless architecture. This hands-on workshop combines color science, mathematical processing, and cloud computing in a practical learning experience.
 
-### 🎯 What ColorLab Does
+### 🎯 What You'll Learn
 
-- **🎨 Professional Color Analysis**: Extract dominant colors with 95% accuracy using advanced algorithms
-- **🧮 K-Means++ Clustering**: Superior color grouping with optimal initialization
-- **🌈 LAB Color Space Processing**: Human vision-aligned color analysis for perceptual accuracy
-- **📊 Regional Analysis**: 3x3 grid-based color distribution mapping
-- **🎓 Educational Workshop**: Complete 7-module curriculum for AWS cloud computing
-- **☁️ Serverless Architecture**: Scalable, cost-effective AWS deployment
+- **🧮 Advanced Mathematical Algorithms**: K-Means++ clustering and LAB color space processing
+- **🎨 Professional Color Analysis**: Industry-standard color identification and analysis
+- **☁️ AWS Serverless Architecture**: Lambda, API Gateway, and S3 integration
+- **📊 Statistical Processing**: Color frequency, harmony, and distribution analysis
+- **🔬 Color Science**: Perceptual color theory and professional standards
+- **🚀 Production Deployment**: Scalable, cost-effective cloud solutions
 
 ### 🏗️ Architecture
 
@@ -96,8 +98,8 @@ By completing this workshop, you'll master:
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/VBTIEN/ColorLab.git
-cd ColorLab
+git clone https://github.com/VBTIEN/ColorLab-Workshop.git
+cd ColorLab-Workshop
 ```
 
 ### 2. Set Up AWS Environment
@@ -331,6 +333,6 @@ This workshop is licensed under the MIT License. See [LICENSE](LICENSE) file for
 
 **Built with 🧮 Mathematical Excellence by AWS Community**
 
-[🌟 Star this repo](https://github.com/VBTIEN/ColorLab) | [🍴 Fork it](https://github.com/VBTIEN/ColorLab/fork) | [📝 Contribute](CONTRIBUTING.md)
+[🌟 Star this repo](https://github.com/VBTIEN/ColorLab-Workshop) | [🍴 Fork it](https://github.com/VBTIEN/ColorLab-Workshop/fork) | [📝 Contribute](CONTRIBUTING.md)
 
 </div>

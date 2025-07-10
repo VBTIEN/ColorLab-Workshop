@@ -1,12 +1,14 @@
 workshop:
-  title: "ColorLab - Professional Color Analysis Platform"
+  title: "ColorLab Workshop - Professional Color Analysis Platform"
   subtitle: "Advanced Mathematical Algorithms with AWS Serverless Architecture"
+  repository: "https://github.com/VBTIEN/ColorLab-Workshop"
   duration: "3-4 hours"
   level: "Intermediate"
   
-  version: "2.0 Corrected"
+  version: "2.0 Workshop Edition"
   last_updated: "2025-07-10"
   author: "AWS Solutions Architect"
+  type: "Educational Workshop"
   
   audience:
     - "Developers interested in advanced algorithms"
