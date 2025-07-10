@@ -16,7 +16,7 @@ home = [ "HTML", "RSS", "JSON"]
   # Workshop specific settings
   editURL = "https://github.com/VBTIEN/ColorLab-Workshop/edit/master/content"
   description = "Professional Color Analysis Workshop using Advanced Mathematical Algorithms and AWS Serverless Architecture"
-  author = "AWS Solutions Architect"
+  author = "Vũ Bá Tiến"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
@@ -24,11 +24,14 @@ home = [ "HTML", "RSS", "JSON"]
   # Workshop branding
   workshopTitle = "ColorLab Workshop"
   workshopSubtitle = "Professional Color Analysis Platform"
-  workshopDuration = "3.5 hours"
+  workshopDuration = "4-5 hours"
   workshopLevel = "Intermediate"
   
   # Custom CSS and JS
   custom_css = ["css/custom.css"]
+  
+  # Last updated date
+  lastUpdated = "2025-07-10"
   
 [Languages]
 [Languages.en]
