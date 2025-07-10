@@ -1,6 +1,6 @@
-# 🎨 AI Image Analyzer Workshop
+# 🎨 ColorLab Workshop
 
-> **Building Intelligent Image Analysis with AWS AI Services**
+> **Professional Color Analysis with AWS AI Services**
 
 [![AWS](https://img.shields.io/badge/AWS-Cloud-orange)](https://aws.amazon.com/)
 [![Python](https://img.shields.io/badge/Python-3.11-blue)](https://python.org/)
@@ -83,8 +83,8 @@ By the end of this workshop, you'll be able to:
 
 ### 1. Clone Workshop Repository
 ```bash
-git clone https://github.com/[YOUR-USERNAME]/ai-image-analyzer-workshop.git
-cd ai-image-analyzer-workshop
+git clone https://github.com/VBTIEN/ColorLab.git
+cd ColorLab
 ```
 
 ### 2. Set Up AWS Environment

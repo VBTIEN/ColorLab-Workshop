@@ -1,8 +1,8 @@
 # AI Image Analyzer Workshop Configuration
 
 workshop:
-  title: "Building Intelligent Image Analysis with AWS AI Services"
-  subtitle: "A hands-on workshop using AWS Lambda, S3, and API Gateway"
+  title: "ColorLab - Professional Color Analysis Workshop"
+  subtitle: "Advanced color analysis using AWS Lambda and AI algorithms"
   duration: "3-4 hours"
   level: "Intermediate"
   
