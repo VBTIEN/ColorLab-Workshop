@@ -114,7 +114,7 @@ Your deployed ColorLab platform will include:
 
 Your final ColorLab architecture will include:
 
-![ColorLab Architecture Diagram](images/architecture-diagram.jpg)
+![ColorLab Architecture Diagram](https://vbtien.github.io/ColorLab-Workshop/images/architecture-diagram.jpg)
 
 *ColorLab AWS Serverless Architecture - Region: ap-southeast-1 (Singapore)*
 
