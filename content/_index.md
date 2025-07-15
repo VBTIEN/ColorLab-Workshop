@@ -114,13 +114,9 @@ Your deployed ColorLab platform will include:
 
 Your final ColorLab architecture will include:
 
-```
-User → S3 Static Website → API Gateway → Lambda Function → Results
-                              ↓
-                         CloudWatch Monitoring
-                              ↓  
-                         IAM Security Layer
-```
+![ColorLab Architecture Diagram](/images/architecture-diagram.jpg)
+
+*ColorLab AWS Serverless Architecture - Region: ap-southeast-1 (Singapore)*
 
 **Key Components:**
 - **Frontend**: S3 Static Website with responsive design
